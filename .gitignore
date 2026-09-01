@@ -1,0 +1,54 @@
+# Environnement et secrets
+.env
+.env.*
+!.env.example
+secrets/
+certs/
+*.key
+*.pem
+.npmrc.local
+
+# Dépendances
+node_modules/
+vendor/
+.pnpm-store/
+
+# Compilation et caches des outils
+dist/
+build/
+coverage/
+.cache/
+.turbo/
+.vite/
+*.tsbuildinfo
+
+# Journaux
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Données locales d'infrastructure
+.docker-data/
+.volumes/
+compose.override.yml
+backups/
+*.dump
+*.backup
+
+# Poids locaux des modèles d'IA
+models/
+*.gguf
+*.safetensors
+
+# Éditeurs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
