@@ -202,4 +202,3 @@ Fonctionnalité: Traçabilité des décisions
 | #16 | Consulter une mission autorisée | Mission non rattachée | Consulter l’avancement client |
 | #11 | Valider un livrable en attente | Statut incompatible | Valider un livrable |
 | #32 | Demander une révision avec un motif | Motif absent | Demander une révision motivée |
-

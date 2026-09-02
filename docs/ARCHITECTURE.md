@@ -264,4 +264,3 @@ Ces composants seront ajoutés sur preuve d’un besoin. Fastify reste l’API p
 - réaliser une installation sur un serveur Linux vierge ;
 - sauvegarder puis restaurer une instance complète ;
 - vérifier l’accessibilité du parcours principal selon RGAA 4.1.
-
