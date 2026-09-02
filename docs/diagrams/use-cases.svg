@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Diagramme UML des cas d’utilisation de la V1</title>
+  <desc id="desc">Interactions des administrateurs, chefs de projet, collaborateurs et clients invités avec le cockpit de suivi de mission.</desc>
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #172033; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 18px; font-weight: 400; fill: #526078; }
+      .system { fill: #f7f9fc; stroke: #51637f; stroke-width: 3; }
+      .system-label { font-family: Arial, sans-serif; font-size: 21px; font-weight: 700; fill: #273854; }
+      .usecase { fill: #ffffff; stroke: #375b91; stroke-width: 2.5; }
+      .usecase-client { fill: #f1fbf6; stroke: #218653; stroke-width: 2.5; }
+      .usecase-text { font-family: Arial, sans-serif; font-size: 17px; font-weight: 600; fill: #172033; text-anchor: middle; }
+      .actor-line { stroke: #172033; stroke-width: 3; stroke-linecap: round; fill: none; }
+      .actor-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #172033; text-anchor: middle; }
+      .link { stroke: #75839a; stroke-width: 2; fill: none; }
+      .include { stroke: #7a5aa6; stroke-width: 2; stroke-dasharray: 8 7; fill: none; }
+      .include-text { font-family: Arial, sans-serif; font-size: 15px; font-style: italic; fill: #68498f; }
+      .issue { font-family: Menlo, monospace; font-size: 14px; font-weight: 700; fill: #375b91; text-anchor: middle; }
+      .legend { font-family: Arial, sans-serif; font-size: 15px; font-weight: 400; fill: #526078; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7a5aa6"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1100" fill="#ffffff"/>
+  <text x="80" y="55" class="title">Cas d’utilisation — Cockpit de mission client</text>
+  <text x="80" y="87" class="subtitle">Périmètre fonctionnel de la V1 · toutes les interactions sont soumises aux permissions</text>
+
+  <rect x="300" y="120" width="1000" height="890" rx="12" class="system"/>
+  <text x="330" y="158" class="system-label">Système Micro SaaS Luigi</text>
+
+  <!-- Acteur Administrateur -->
+  <circle cx="145" cy="240" r="23" class="actor-line"/>
+  <path d="M145 263 L145 335 M103 288 L187 288 M145 335 L108 390 M145 335 L182 390" class="actor-line"/>
+  <text x="145" y="423" class="actor-text">Administrateur</text>
+
+  <!-- Acteur Chef de projet -->
+  <circle cx="145" cy="500" r="23" class="actor-line"/>
+  <path d="M145 523 L145 595 M103 548 L187 548 M145 595 L108 650 M145 595 L182 650" class="actor-line"/>
+  <text x="145" y="683" class="actor-text">Chef de projet</text>
+
+  <!-- Acteur Collaborateur -->
+  <circle cx="145" cy="790" r="23" class="actor-line"/>
+  <path d="M145 813 L145 885 M103 838 L187 838 M145 885 L108 940 M145 885 L182 940" class="actor-line"/>
+  <text x="145" y="973" class="actor-text">Collaborateur</text>
+
+  <!-- Acteur Client -->
+  <circle cx="1455" cy="555" r="23" class="actor-line"/>
+  <path d="M1455 578 L1455 650 M1413 603 L1497 603 M1455 650 L1418 705 M1455 650 L1492 705" class="actor-line"/>
+  <text x="1455" y="738" class="actor-text">Client invité</text>
+
+  <!-- Cas d'utilisation -->
+  <ellipse cx="800" cy="210" rx="175" ry="48" class="usecase"/>
+  <text x="800" y="216" class="usecase-text">S’authentifier</text>
+
+  <ellipse cx="505" cy="330" rx="170" ry="55" class="usecase"/>
+  <text x="505" y="324" class="usecase-text">Gérer les utilisateurs</text>
+  <text x="505" y="346" class="usecase-text">et les clients</text>
+
+  <ellipse cx="795" cy="360" rx="190" ry="60" class="usecase"/>
+  <text x="795" y="350" class="issue">#8</text>
+  <text x="795" y="377" class="usecase-text">Créer une mission</text>
+  <text x="795" y="399" class="usecase-text">et définir ses livrables</text>
+
+  <ellipse cx="500" cy="520" rx="175" ry="58" class="usecase"/>
+  <text x="500" y="512" class="usecase-text">Organiser les tâches</text>
+  <text x="500" y="535" class="usecase-text">dans le Kanban interne</text>
+
+  <ellipse cx="795" cy="560" rx="190" ry="60" class="usecase"/>
+  <text x="795" y="550" class="usecase-text">Soumettre un livrable</text>
+  <text x="795" y="574" class="usecase-text">à validation</text>
+
+  <ellipse cx="505" cy="740" rx="185" ry="62" class="usecase"/>
+  <text x="505" y="730" class="issue">#6</text>
+  <text x="505" y="758" class="usecase-text">Mettre à jour une tâche</text>
+  <text x="505" y="780" class="usecase-text">interne autorisée</text>
+
+  <ellipse cx="800" cy="880" rx="180" ry="55" class="usecase"/>
+  <text x="800" y="873" class="usecase-text">Consulter l’historique</text>
+  <text x="800" y="896" class="usecase-text">de la mission</text>
+
+  <ellipse cx="1090" cy="400" rx="180" ry="62" class="usecase-client"/>
+  <text x="1090" y="390" class="issue">#16</text>
+  <text x="1090" y="418" class="usecase-text">Consulter l’avancement</text>
+  <text x="1090" y="440" class="usecase-text">d’une mission autorisée</text>
+
+  <ellipse cx="1090" cy="590" rx="170" ry="58" class="usecase-client"/>
+  <text x="1090" y="581" class="issue">#11</text>
+  <text x="1090" y="612" class="usecase-text">Valider un livrable</text>
+
+  <ellipse cx="1085" cy="760" rx="190" ry="62" class="usecase-client"/>
+  <text x="1085" y="750" class="issue">#32</text>
+  <text x="1085" y="778" class="usecase-text">Demander une révision</text>
+  <text x="1085" y="800" class="usecase-text">avec un motif</text>
+
+  <!-- Associations acteurs / cas -->
+  <path d="M187 287 L625 220" class="link"/>
+  <path d="M187 320 L335 330" class="link"/>
+
+  <path d="M187 545 L625 225" class="link"/>
+  <path d="M187 555 L605 380" class="link"/>
+  <path d="M187 570 L325 520" class="link"/>
+  <path d="M187 590 L605 560" class="link"/>
+  <path d="M187 610 L620 865" class="link"/>
+
+  <path d="M187 835 L625 230" class="link"/>
+  <path d="M187 850 L320 750" class="link"/>
+
+  <path d="M1413 600 L975 225" class="link"/>
+  <path d="M1413 610 L1270 415" class="link"/>
+  <path d="M1413 625 L1260 590" class="link"/>
+  <path d="M1413 640 L1275 760" class="link"/>
+
+  <!-- Includes -->
+  <path d="M1090 648 C1080 850 1010 890 980 890" class="include"/>
+  <text x="1055" y="860" class="include-text">« include » tracer la décision</text>
+  <path d="M1085 822 C1050 890 1010 900 980 900" class="include"/>
+  <path d="M980 890 L1003 879 L1003 901 Z" fill="#7a5aa6"/>
+
+  <line x1="335" y1="1050" x2="395" y2="1050" class="link"/>
+  <text x="410" y="1055" class="legend">association acteur / système</text>
+  <line x1="755" y1="1050" x2="815" y2="1050" class="include"/>
+  <path d="M815 1050 L797 1041 L797 1059 Z" fill="#7a5aa6"/>
+  <text x="830" y="1055" class="legend">relation d’inclusion</text>
+</svg>

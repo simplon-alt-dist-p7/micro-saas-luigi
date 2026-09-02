@@ -14,6 +14,10 @@ Le projet est dans sa phase de conception. Aucun code applicatif n’est dévelo
 
 - [Recherche JTBD](docs/recherche-jtbd.md)
 - [PRD lean](docs/PRD.md)
+- [Spécifications fonctionnelles](docs/SPECS.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Diagramme UML des cas d’utilisation](docs/diagrams/use-cases.png)
+- [Diagramme UML de déploiement](docs/diagrams/deployment.png)
 - [GitHub Project](https://github.com/orgs/simplon-alt-dist-p7/projects/30)
 
 Les spécifications, diagrammes, modèles de données et maquettes seront ajoutés progressivement dans `docs/`.

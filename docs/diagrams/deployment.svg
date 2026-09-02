@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Diagramme UML de déploiement logique de la V1</title>
+  <desc id="desc">Navigateur, reverse proxy Caddy, frontend Next.js, backend Fastify, PostgreSQL et serveur SMTP facultatif avec leurs protocoles.</desc>
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #172033; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 18px; font-weight: 400; fill: #526078; }
+      .node { fill: #f7f9fc; stroke: #445a78; stroke-width: 3; }
+      .node-green { fill: #f1fbf6; stroke: #218653; stroke-width: 3; }
+      .node-amber { fill: #fff9ec; stroke: #a46800; stroke-width: 3; }
+      .node-title { font-family: Arial, sans-serif; font-size: 21px; font-weight: 700; fill: #172033; }
+      .stereo { font-family: Menlo, monospace; font-size: 15px; font-weight: 600; fill: #526078; }
+      .artifact { fill: #ffffff; stroke: #8795aa; stroke-width: 2; }
+      .artifact-title { font-family: Arial, sans-serif; font-size: 17px; font-weight: 700; fill: #273854; }
+      .artifact-tech { font-family: Menlo, monospace; font-size: 15px; font-weight: 400; fill: #526078; }
+      .link { stroke: #375b91; stroke-width: 3; fill: none; }
+      .link-optional { stroke: #a46800; stroke-width: 3; stroke-dasharray: 10 8; fill: none; }
+      .protocol-bg { fill: #ffffff; stroke: #d7deea; stroke-width: 1; }
+      .protocol { font-family: Menlo, monospace; font-size: 15px; font-weight: 700; fill: #273854; text-anchor: middle; }
+      .note { fill: #eef3fb; stroke: #9baac0; stroke-width: 2; }
+      .note-text { font-family: Arial, sans-serif; font-size: 16px; font-weight: 400; fill: #354761; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#375b91"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#a46800"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <text x="70" y="55" class="title">Déploiement logique — V1</text>
+  <text x="70" y="87" class="subtitle">Vue de Phase 1 · les VPS, conteneurs, volumes et réseaux physiques seront détaillés en Phase 2</text>
+
+  <!-- Navigateur -->
+  <rect x="70" y="280" width="250" height="230" rx="10" class="node"/>
+  <text x="95" y="320" class="stereo">« device »</text>
+  <text x="95" y="350" class="node-title">Navigateur web</text>
+  <rect x="105" y="385" width="180" height="80" rx="6" class="artifact"/>
+  <text x="125" y="418" class="artifact-title">Interface rendue</text>
+  <text x="125" y="445" class="artifact-tech">HTML · CSS · JS</text>
+
+  <!-- Reverse proxy -->
+  <rect x="410" y="245" width="260" height="300" rx="10" class="node-green"/>
+  <text x="435" y="285" class="stereo">« node »</text>
+  <text x="435" y="315" class="node-title">Reverse proxy</text>
+  <rect x="450" y="350" width="180" height="95" rx="6" class="artifact"/>
+  <text x="472" y="385" class="artifact-title">Caddy</text>
+  <text x="472" y="412" class="artifact-tech">TLS · routage</text>
+  <text x="472" y="435" class="artifact-tech">en-têtes sécurité</text>
+  <rect x="450" y="465" width="180" height="48" rx="6" class="artifact"/>
+  <text x="472" y="496" class="artifact-tech">/ · /api · /ws</text>
+
+  <!-- Frontend -->
+  <rect x="780" y="135" width="310" height="250" rx="10" class="node"/>
+  <text x="805" y="175" class="stereo">« node »</text>
+  <text x="805" y="205" class="node-title">Frontend</text>
+  <rect x="825" y="240" width="220" height="100" rx="6" class="artifact"/>
+  <text x="850" y="275" class="artifact-title">Application web</text>
+  <text x="850" y="302" class="artifact-tech">Next.js · TypeScript</text>
+  <text x="850" y="326" class="artifact-tech">App Router</text>
+
+  <!-- Backend -->
+  <rect x="780" y="470" width="310" height="290" rx="10" class="node"/>
+  <text x="805" y="510" class="stereo">« node »</text>
+  <text x="805" y="540" class="node-title">Backend API</text>
+  <rect x="825" y="575" width="220" height="135" rx="6" class="artifact"/>
+  <text x="850" y="610" class="artifact-title">API métier</text>
+  <text x="850" y="637" class="artifact-tech">Fastify · TypeScript</text>
+  <text x="850" y="661" class="artifact-tech">REST · WebSocket</text>
+  <text x="850" y="685" class="artifact-tech">Drizzle ORM</text>
+
+  <!-- Base de données -->
+  <rect x="1240" y="430" width="290" height="250" rx="10" class="node-green"/>
+  <text x="1265" y="470" class="stereo">« database node »</text>
+  <text x="1265" y="500" class="node-title">Base de données</text>
+  <rect x="1285" y="535" width="200" height="100" rx="6" class="artifact"/>
+  <text x="1310" y="570" class="artifact-title">Données métier</text>
+  <text x="1310" y="597" class="artifact-tech">PostgreSQL</text>
+  <text x="1310" y="621" class="artifact-tech">sessions · audit</text>
+
+  <!-- SMTP optionnel -->
+  <rect x="1240" y="720" width="290" height="130" rx="10" class="node-amber"/>
+  <text x="1265" y="758" class="stereo">« external service »</text>
+  <text x="1265" y="788" class="node-title">Serveur SMTP facultatif</text>
+  <text x="1265" y="820" class="artifact-tech">invitation · récupération</text>
+
+  <!-- Liens -->
+  <path d="M320 395 L410 395" class="link"/>
+  <path d="M410 395 L390 384 L390 406 Z" fill="#375b91"/>
+  <rect x="330" y="350" width="75" height="29" rx="5" class="protocol-bg"/>
+  <text x="367" y="370" class="protocol">HTTPS</text>
+  <rect x="330" y="414" width="75" height="29" rx="5" class="protocol-bg"/>
+  <text x="367" y="434" class="protocol">WSS</text>
+
+  <path d="M670 330 C720 300 735 275 780 260" class="link"/>
+  <path d="M780 260 L759 252 L764 273 Z" fill="#375b91"/>
+  <rect x="665" y="258" width="95" height="29" rx="5" class="protocol-bg"/>
+  <text x="712" y="278" class="protocol">HTTP</text>
+
+  <path d="M670 455 C720 500 735 575 780 605" class="link"/>
+  <path d="M780 605 L757 602 L769 583 Z" fill="#375b91"/>
+  <rect x="660" y="500" width="110" height="29" rx="5" class="protocol-bg"/>
+  <text x="715" y="520" class="protocol">HTTP/JSON</text>
+  <rect x="660" y="543" width="110" height="29" rx="5" class="protocol-bg"/>
+  <text x="715" y="563" class="protocol">WebSocket</text>
+
+  <path d="M935 385 L935 470" class="link"/>
+  <path d="M935 470 L924 450 L946 450 Z" fill="#375b91"/>
+  <rect x="952" y="410" width="110" height="29" rx="5" class="protocol-bg"/>
+  <text x="1007" y="430" class="protocol">HTTP/JSON</text>
+
+  <path d="M1090 605 L1240 565" class="link"/>
+  <path d="M1240 565 L1218 560 L1224 581 Z" fill="#375b91"/>
+  <rect x="1110" y="540" width="110" height="29" rx="5" class="protocol-bg"/>
+  <text x="1165" y="560" class="protocol">SQL/TCP</text>
+
+  <path d="M1090 690 C1160 735 1180 780 1240 785" class="link-optional"/>
+  <path d="M1240 785 L1218 774 L1217 796 Z" fill="#a46800"/>
+  <rect x="1115" y="728" width="100" height="29" rx="5" class="protocol-bg"/>
+  <text x="1165" y="748" class="protocol">SMTP/TLS</text>
+
+  <!-- Note -->
+  <rect x="70" y="720" width="560" height="125" rx="8" class="note"/>
+  <text x="95" y="758" class="note-text">Aucun service cloud propriétaire n’est obligatoire.</text>
+  <text x="95" y="788" class="note-text">Le même ensemble logique est déployable dans le cloud</text>
+  <text x="95" y="818" class="note-text">ou sur l’infrastructure du client.</text>
+</svg>
