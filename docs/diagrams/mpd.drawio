@@ -1,0 +1,128 @@
+<mxfile host="65bd71144e">
+    <diagram name="MPD" id="mpd">
+        <mxGraphModel dx="2020" dy="1441" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1180" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="MPD — Modèle physique PostgreSQL — Cockpit" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="20" width="1600" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="zi" value="IDENTITÉ ET ORGANISATION" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=center;spacingTop=10;spacingLeft=12;fontSize=16;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=35;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="80" width="570" height="1010" as="geometry"/>
+                </mxCell>
+                <mxCell id="zm" value="MISSIONS ET ACCÈS" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=center;spacingTop=10;spacingLeft=12;fontSize=16;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=35;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="80" width="330" height="1010" as="geometry"/>
+                </mxCell>
+                <mxCell id="zw" value="TRAVAIL ET LIVRABLES" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=center;spacingTop=10;spacingLeft=12;fontSize=16;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=35;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="970" y="80" width="480" height="1010" as="geometry"/>
+                </mxCell>
+                <mxCell id="zt" value="HISTORIQUE ET AUDIT" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=center;spacingTop=10;spacingLeft=12;fontSize=16;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;opacity=35;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="80" width="500" height="1010" as="geometry"/>
+                </mxCell>
+                <mxCell id="organizations" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;organizations&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; organization_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;name TEXT NOT NULL&lt;br&gt;created_at TIMESTAMPTZ&lt;br&gt;updated_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="150" width="220" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="users" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;users&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; user_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;email TEXT NOT NULL · &lt;span style=&quot;color:#7c3aed&quot;&gt;&lt;b&gt;UQ&lt;/b&gt; lower(email)&lt;/span&gt;&lt;br&gt;password_hash TEXT NOT NULL&lt;br&gt;display_name TEXT NOT NULL&lt;br&gt;is_active BOOLEAN&lt;br&gt;created_at TIMESTAMPTZ&lt;br&gt;updated_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="150" width="230" height="248" as="geometry"/>
+                </mxCell>
+                <mxCell id="clients" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;clients&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; client_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id → organizations BIGINT&lt;/span&gt;&lt;br&gt;name TEXT NOT NULL&lt;br&gt;created_at TIMESTAMPTZ&lt;br&gt;updated_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="420" width="220" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="organization_memberships" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;organization_memberships&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; membership_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT → organizations&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; user_id BIGINT → users · UQ&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + client_id BIGINT → clients · NULL&lt;/span&gt;&lt;br&gt;role TEXT · CHECK&lt;br&gt;joined_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="315" y="420" width="255" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="sessions" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;sessions&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; session_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + membership_id BIGINT → organization_memberships&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#7c3aed&quot;&gt;&lt;b&gt;UQ&lt;/b&gt; token_hash TEXT&lt;/span&gt;&lt;br&gt;expires_at TIMESTAMPTZ&lt;br&gt;last_seen_at TIMESTAMPTZ&lt;br&gt;created_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="315" y="700" width="255" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="missions" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;missions&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; mission_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + client_id BIGINT → clients&lt;/span&gt;&lt;br&gt;name TEXT NOT NULL&lt;br&gt;description TEXT NULL&lt;br&gt;status TEXT · CHECK&lt;br&gt;start_date DATE NULL&lt;br&gt;due_date DATE NULL&lt;br&gt;created_at TIMESTAMPTZ&lt;br&gt;updated_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="310" width="270" height="255" as="geometry"/>
+                </mxCell>
+                <mxCell id="mission_accesses" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;mission_accesses&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; organization_id BIGINT + mission_id BIGINT + membership_id BIGINT&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + mission_id BIGINT → missions&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + membership_id BIGINT → organization_memberships&lt;/span&gt;&lt;br&gt;granted_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="700" width="270" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="tasks" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;tasks&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; task_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + mission_id BIGINT → missions&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + assignee_membership_id BIGINT → organization_memberships · NULL&lt;/span&gt;&lt;br&gt;title TEXT NOT NULL&lt;br&gt;description TEXT NULL&lt;br&gt;status TEXT · CHECK&lt;br&gt;position BIGINT · CHECK&lt;br&gt;due_date DATE NULL&lt;br&gt;created_at TIMESTAMPTZ&lt;br&gt;updated_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="1005" y="180" width="405" height="294" as="geometry"/>
+                </mxCell>
+                <mxCell id="deliverables" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;deliverables&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; deliverable_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + mission_id BIGINT → missions&lt;/span&gt;&lt;br&gt;title TEXT NOT NULL&lt;br&gt;description TEXT NULL&lt;br&gt;reference_url TEXT NULL&lt;br&gt;status TEXT · CHECK&lt;br&gt;version INTEGER · CHECK&lt;br&gt;due_date DATE NULL&lt;br&gt;submitted_at TIMESTAMPTZ NULL&lt;br&gt;validated_at TIMESTAMPTZ NULL&lt;br&gt;created_at TIMESTAMPTZ&lt;br&gt;updated_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="1005" y="560" width="405" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="audit_events" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;audit_events&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; audit_event_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT → organizations&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + actor_membership_id BIGINT → organization_memberships · NULL&lt;/span&gt;&lt;br&gt;event_type TEXT NOT NULL&lt;br&gt;resource_type TEXT NOT NULL&lt;br&gt;resource_id BIGINT NULL&lt;br&gt;occurred_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="1510" y="150" width="420" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="task_status_changes" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;task_status_changes&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; task_status_change_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + task_id BIGINT → tasks&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + actor_membership_id BIGINT → organization_memberships&lt;/span&gt;&lt;br&gt;previous_status TEXT · CHECK&lt;br&gt;new_status TEXT · CHECK&lt;br&gt;changed_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="1510" y="430" width="420" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="deliverable_status_changes" value="&lt;div style=&quot;font-size:15px;line-height:1.32&quot;&gt;&lt;div style=&quot;font-size:16px;font-weight:700;margin-bottom:6px&quot;&gt;deliverable_status_changes&lt;/div&gt;&lt;span style=&quot;color:#1d4ed8&quot;&gt;&lt;b&gt;PK&lt;/b&gt; deliverable_status_change_id BIGINT IDENTITY&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + deliverable_id BIGINT → deliverables&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color:#b45309&quot;&gt;&lt;b&gt;FK&lt;/b&gt; organization_id BIGINT + actor_membership_id BIGINT → organization_memberships&lt;/span&gt;&lt;br&gt;previous_status TEXT · CHECK&lt;br&gt;new_status TEXT · CHECK&lt;br&gt;reason TEXT NULL · CHECK&lt;br&gt;changed_at TIMESTAMPTZ&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontColor=#172033;" parent="1" vertex="1">
+                    <mxGeometry x="1510" y="720" width="420" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="r1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="organizations" target="clients" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="r3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="users" target="organization_memberships" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="r5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="organization_memberships" target="sessions" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="r6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="clients" target="missions" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="180" y="653"/>
+                            <mxPoint x="610" y="653"/>
+                            <mxPoint x="610" y="438"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="r7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="missions" target="mission_accesses" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="r8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="organization_memberships" target="mission_accesses" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="638" y="510"/>
+                            <mxPoint x="638" y="810"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="r9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="missions" target="tasks" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="r11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="tasks" target="task_status_changes" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1450" y="327"/>
+                            <mxPoint x="1450" y="540"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="r13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="missions" target="deliverables" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="r14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;labelBackgroundColor=#ffffff;fontColor=#334155;" parent="1" source="deliverables" target="deliverable_status_changes" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="r15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.15;entryDx=0;entryDy=0;" parent="1" source="organizations" target="audit_events" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="180" y="125"/>
+                            <mxPoint x="1480" y="125"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="r16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeColor=#64748b;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" source="organization_memberships" target="audit_events" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="600" y="530"/>
+                            <mxPoint x="600" y="1000"/>
+                            <mxPoint x="1450" y="1000"/>
+                            <mxPoint x="1450" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend" value="PostgreSQL · BIGINT IDENTITY · TIMESTAMPTZ. Le DDL de référence détaille les contraintes CHECK, index, suppressions en cascade et politiques RLS." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=10;fillColor=#fffbe6;strokeColor=#d6b656;fontSize=12;fontColor=#334155;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1100" width="1920" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

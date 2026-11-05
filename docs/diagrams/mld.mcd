@@ -1,0 +1,31 @@
+USERS: user_id, email, password_hash, display_name, is_active, created_at, updated_at
+:
+SESSIONS: session_id, organization_id FK, #membership_id > ORGANIZATION_MEMBERSHIPS > membership_id, token_hash, expires_at, last_seen_at, created_at
+:
+AUDIT_EVENTS: audit_event_id, #organization_id > ORGANIZATIONS > organization_id, #actor_membership_id? > ORGANIZATION_MEMBERSHIPS > membership_id, event_type, resource_type, resource_id, occurred_at
+
+:
+ORGANIZATION_MEMBERSHIPS: membership_id, #organization_id > ORGANIZATIONS > organization_id, #user_id > USERS > user_id, #client_id? > CLIENTS > client_id, role, joined_at
+:
+MISSION_ACCESSES: organization_id PK FK, _#mission_id > MISSIONS > mission_id, _#membership_id > ORGANIZATION_MEMBERSHIPS > membership_id, granted_at
+:
+
+ORGANIZATIONS: organization_id, name, created_at, updated_at
+CLIENTS: client_id, #organization_id > ORGANIZATIONS > organization_id, name, created_at, updated_at
+MISSIONS: mission_id, organization_id FK, #client_id > CLIENTS > client_id, name, description, status, start_date, due_date, created_at, updated_at
+:
+:
+
+:
+:
+TASKS: task_id, organization_id FK, #mission_id > MISSIONS > mission_id, #assignee_membership_id? > ORGANIZATION_MEMBERSHIPS > membership_id, title, description, status, position, due_date, created_at, updated_at
+TASK_STATUS_CHANGES: task_status_change_id, organization_id FK, #task_id > TASKS > task_id, actor_membership_id FK, previous_status, new_status, changed_at
+:
+
+:
+:
+DELIVERABLES: deliverable_id, organization_id FK, #mission_id > MISSIONS > mission_id, title, description, reference_url, status, version, due_date, submitted_at, validated_at, created_at, updated_at
+DELIVERABLE_STATUS_CHANGES: deliverable_status_change_id, organization_id FK, #deliverable_id > DELIVERABLES > deliverable_id, actor_membership_id FK, previous_status, new_status, reason, changed_at
+:
+
+LÉGENDE: PK = attribut souligné, dièse = FK avec flèche, FK = clé composite ou répétée, point interrogation = facultatif
