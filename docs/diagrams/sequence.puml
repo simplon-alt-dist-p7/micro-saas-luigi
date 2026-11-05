@@ -1,0 +1,81 @@
+@startuml
+title Cockpit — Décision sur un livrable
+autonumber
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontColor #111827
+skinparam ArrowColor #475569
+skinparam ActorBorderColor #0F766E
+skinparam ActorFontColor #0F172A
+skinparam ParticipantBorderColor #0F766E
+skinparam ParticipantBackgroundColor #CCFBF1
+skinparam ParticipantFontColor #0F172A
+skinparam DatabaseBorderColor #0F766E
+skinparam DatabaseBackgroundColor #F8FAFC
+skinparam SequenceLifeLineBorderColor #64748B
+skinparam SequenceGroupBorderColor #CBD5E1
+skinparam SequenceGroupBackgroundColor #F8FAFC
+skinparam NoteBorderColor #CBD5E1
+skinparam NoteBackgroundColor #F8FAFC
+
+actor "Client invité" as Client
+boundary "Frontend\nNext.js" as Front
+control "API\nFastify" as API
+database "PostgreSQL" as DB
+
+Client -> Front: Ouvrir la mission autorisée
+Front -> API: GET /api/missions/{missionId}/portal
+activate API
+API -> DB: BEGIN\nSET LOCAL app.current_organization_id
+activate DB
+API -> DB: Lire mission, accès et livrables visibles
+DB --> API: Vue client filtrée
+API -> DB: COMMIT
+deactivate DB
+API --> Front: 200 — Mission et livrables
+deactivate API
+Front --> Client: Afficher progression et actions autorisées
+
+Client -> Front: Valider ou demander une révision
+note right of Front
+  Une révision exige un motif.
+  La requête contient la version affichée.
+end note
+Front -> API: POST /api/deliverables/{id}/decision\n{decision, reason?, version}
+activate API
+API -> DB: BEGIN\nSET LOCAL app.current_organization_id
+activate DB
+API -> DB: SELECT livrable et accès\nFOR UPDATE
+DB --> API: Livrable courant ou aucun résultat
+deactivate DB
+
+alt Accès non autorisé
+  API -> DB: ROLLBACK
+  API --> Front: 404 — Ressource introuvable
+  Front --> Client: Afficher un accès indisponible
+else Statut ou version obsolète
+  API -> DB: ROLLBACK
+  API --> Front: 409 — État devenu obsolète
+  Front -> API: Recharger l’état courant
+  API --> Front: Livrable actualisé
+  Front --> Client: Demander de confirmer à nouveau
+else Révision sans motif
+  API -> DB: ROLLBACK
+  API --> Front: 422 — Motif obligatoire
+  Front --> Client: Associer l’erreur au champ motif
+else Décision autorisée
+  activate DB
+  API -> DB: INSERT deliverable_status_changes
+  API -> DB: UPDATE deliverables\nstatut, version et dates
+  API -> DB: Calculer la progression de la mission
+  DB --> API: Livrable et progression actualisés
+  API -> DB: COMMIT
+  deactivate DB
+  API --> Front: Événement WebSocket après commit
+  API --> Front: 200 — Vue client actualisée
+  Front --> Client: Confirmer la décision et le nouvel état
+end
+
+deactivate API
+@enduml
