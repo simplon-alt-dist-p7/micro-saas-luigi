@@ -1,0 +1,71 @@
+:
+:
+:
+:
+:
+:
+:
+
+:
+:
+:
+:
+:
+:
+:
+
+SESSION: session_id, token_hash, expires_at, last_seen_at, created_at
+:
+USER_ACCOUNT: user_id, email, password_hash, display_name, is_active, created_at, updated_at
+:
+AUDIT_EVENT: audit_event_id, event_type, resource_type, resource_id, occurred_at
+:
+:
+
+:
+HAS_SESSION, 0N ORGANIZATION_MEMBERSHIP, 11 SESSION
+HAS_ACCOUNT, 11 ORGANIZATION_MEMBERSHIP, 11 USER_ACCOUNT
+ACTS_IN, 0N ORGANIZATION_MEMBERSHIP, 01 AUDIT_EVENT
+:
+LOGS_EVENT, 0N ORGANIZATION, 11 AUDIT_EVENT
+:
+
+ORGANIZATION: organization_id, name, created_at, updated_at
+HAS_MEMBER, 0N ORGANIZATION, 11 ORGANIZATION_MEMBERSHIP
+ORGANIZATION_MEMBERSHIP: membership_id, role, joined_at
+:
+CHANGED_TASK_BY, 0N ORGANIZATION_MEMBERSHIP, 11 TASK_STATUS_CHANGE
+:
+TASK_STATUS_CHANGE: task_status_change_id, previous_status, new_status, changed_at
+
+CLIENT_OF, 0N ORGANIZATION, 11 CLIENT
+REPRESENTS, 0N CLIENT, 01 ORGANIZATION_MEMBERSHIP
+MISSION_ACCESS, 0N ORGANIZATION_MEMBERSHIP, 0N MISSION: granted_at
+ASSIGNED_TO, 0N ORGANIZATION_MEMBERSHIP, 01 TASK
+:
+TASK_CHANGED, 0N TASK, 11 TASK_STATUS_CHANGE
+:
+
+CLIENT: client_id, name, created_at, updated_at
+CONCERNS, 0N CLIENT, 11 MISSION
+MISSION: mission_id, name, description, status, start_date, due_date, created_at, updated_at
+HAS_TASK, 0N MISSION, 11 TASK
+TASK: task_id, title, description, status, position, due_date, created_at, updated_at
+CHANGED_DELIVERABLE_BY, 0N ORGANIZATION_MEMBERSHIP, 11 DELIVERABLE_STATUS_CHANGE
+:
+
+:
+:
+HAS_DELIVERABLE, 0N MISSION, 11 DELIVERABLE
+:
+:
+:
+:
+
+:
+:
+DELIVERABLE: deliverable_id, title, description, reference_url, status, version, due_date, submitted_at, validated_at, created_at, updated_at
+DELIVERABLE_CHANGED, 0N DELIVERABLE, 11 DELIVERABLE_STATUS_CHANGE
+DELIVERABLE_STATUS_CHANGE: deliverable_status_change_id, previous_status, new_status, reason, changed_at
+:
+:

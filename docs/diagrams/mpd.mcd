@@ -1,0 +1,25 @@
+USERS: user_id BIGINT PK, email TEXT UQ, password_hash TEXT, display_name TEXT, is_active BOOLEAN, created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+ORGANIZATION_MEMBERSHIPS: membership_id BIGINT PK, #organization_id BIGINT FK > ORGANIZATIONS > organization_id BIGINT PK, #user_id BIGINT FK UQ > USERS > user_id BIGINT PK, #client_id BIGINT FK NULL? > CLIENTS > client_id BIGINT PK, role TEXT, joined_at TIMESTAMPTZ
+SESSIONS: session_id BIGINT PK, organization_id BIGINT FK, #membership_id BIGINT FK > ORGANIZATION_MEMBERSHIPS > membership_id BIGINT PK, token_hash TEXT UQ, expires_at TIMESTAMPTZ, last_seen_at TIMESTAMPTZ, created_at TIMESTAMPTZ
+AUDIT_EVENTS: audit_event_id BIGINT PK, #organization_id BIGINT FK > ORGANIZATIONS > organization_id BIGINT PK, #actor_membership_id BIGINT FK NULL? > ORGANIZATION_MEMBERSHIPS > membership_id BIGINT PK, event_type TEXT, resource_type TEXT, resource_id BIGINT NULL, occurred_at TIMESTAMPTZ
+:
+
+ORGANIZATIONS: organization_id BIGINT PK, name TEXT, created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+CLIENTS: client_id BIGINT PK, #organization_id BIGINT FK > ORGANIZATIONS > organization_id BIGINT PK, name TEXT, created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+MISSIONS: mission_id BIGINT PK, organization_id BIGINT FK, #client_id BIGINT FK > CLIENTS > client_id BIGINT PK, name TEXT, description TEXT NULL, status TEXT, start_date DATE NULL, due_date DATE NULL, created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+MISSION_ACCESSES: organization_id BIGINT PK FK, _#mission_id BIGINT PK FK > MISSIONS > mission_id BIGINT PK, _#membership_id BIGINT PK FK > ORGANIZATION_MEMBERSHIPS > membership_id BIGINT PK, granted_at TIMESTAMPTZ
+:
+
+:
+:
+TASKS: task_id BIGINT PK, organization_id BIGINT FK, #mission_id BIGINT FK > MISSIONS > mission_id BIGINT PK, #assignee_membership_id BIGINT FK NULL? > ORGANIZATION_MEMBERSHIPS > membership_id BIGINT PK, title TEXT, description TEXT NULL, status TEXT, position BIGINT, due_date DATE NULL, created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+TASK_STATUS_CHANGES: task_status_change_id BIGINT PK, organization_id BIGINT FK, #task_id BIGINT FK > TASKS > task_id BIGINT PK, actor_membership_id BIGINT FK, previous_status TEXT, new_status TEXT, changed_at TIMESTAMPTZ
+:
+
+:
+:
+DELIVERABLES: deliverable_id BIGINT PK, organization_id BIGINT FK, #mission_id BIGINT FK > MISSIONS > mission_id BIGINT PK, title TEXT, description TEXT NULL, reference_url TEXT NULL, status TEXT, version INTEGER, due_date DATE NULL, submitted_at TIMESTAMPTZ NULL, validated_at TIMESTAMPTZ NULL, created_at TIMESTAMPTZ, updated_at TIMESTAMPTZ
+DELIVERABLE_STATUS_CHANGES: deliverable_status_change_id BIGINT PK, organization_id BIGINT FK, #deliverable_id BIGINT FK > DELIVERABLES > deliverable_id BIGINT PK, actor_membership_id BIGINT FK, previous_status TEXT, new_status TEXT, reason TEXT NULL, changed_at TIMESTAMPTZ
+:
+
+LÉGENDE: PK = clé primaire soulignée, dièse = FK avec flèche, FK = clé composite ou répétée, NULL ou point interrogation = facultatif
