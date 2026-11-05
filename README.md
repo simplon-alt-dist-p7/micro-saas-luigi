@@ -1,6 +1,6 @@
-# Micro SaaS Luigi
+# Cockpit
 
-Micro SaaS Luigi est un espace de travail souverain destiné aux petites ESN et agences numériques françaises de 5 à 30 personnes. Sa vision est de centraliser progressivement le pilotage des missions clients afin de réduire la fragmentation et la dépendance à plusieurs solutions SaaS.
+Cockpit est un espace de travail souverain destiné aux petites ESN et agences numériques françaises de 5 à 30 personnes. Sa vision est de centraliser progressivement le pilotage des missions clients afin de réduire la fragmentation et la dépendance à plusieurs solutions SaaS.
 
 ## Proposition de valeur
 
@@ -16,8 +16,18 @@ Le projet est dans sa phase de conception. Aucun code applicatif n’est dévelo
 - [PRD lean](docs/PRD.md)
 - [Spécifications fonctionnelles](docs/SPECS.md)
 - [Architecture](docs/ARCHITECTURE.md)
+- [Modèle de données](docs/DATA_MODEL.md)
+- [Dictionnaire de données](docs/data-dictionary.md)
+- [Charte graphique et design tokens](docs/DESIGN.md)
+- [Benchmark visuel](docs/benchmark.md)
+- [Moodboard](docs/moodboard.md)
 - [Diagramme UML des cas d’utilisation](docs/diagrams/use-cases.png)
 - [Diagramme UML de déploiement](docs/diagrams/deployment.png)
+- [Modèle conceptuel de données](docs/diagrams/mcd.png)
+- [Modèle logique de données](docs/diagrams/mld.png)
+- [Modèle physique PostgreSQL](docs/diagrams/mpd.png)
+- [DDL PostgreSQL](docs/database/schema.sql)
+- [Diagramme de séquence](docs/diagrams/sequence.png)
 - [GitHub Project](https://github.com/orgs/simplon-alt-dist-p7/projects/30)
 
 Les spécifications, diagrammes, modèles de données et maquettes seront ajoutés progressivement dans `docs/`.
