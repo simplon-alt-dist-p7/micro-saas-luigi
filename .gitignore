@@ -21,6 +21,11 @@ coverage/
 .turbo/
 .vite/
 *.tsbuildinfo
+*_geo.json
+sandbox.mcd
+
+# Anciens diagrammes locaux hors du périmètre de Cockpit
+/diagrams/
 
 # Journaux
 logs/
@@ -52,3 +57,6 @@ models/
 # Systèmes d'exploitation
 .DS_Store
 Thumbs.db
+
+# Documents personnels de formation
+/Titre CDA/
