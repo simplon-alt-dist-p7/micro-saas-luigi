@@ -1,4 +1,4 @@
-# Spécifications fonctionnelles — Suivi et validation des livrables
+# Spécifications fonctionnelles — Cockpit
 
 | Information | Valeur |
 | --- | --- |

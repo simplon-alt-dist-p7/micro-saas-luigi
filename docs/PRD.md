@@ -1,4 +1,4 @@
-# PRD lean — Cockpit de suivi de mission client
+# PRD lean — Cockpit
 
 | Information | Valeur |
 | --- | --- |
@@ -9,7 +9,7 @@
 
 ## 1. Résumé
 
-La vision de Micro SaaS Luigi est de devenir un espace de travail souverain pour les petites ESN et agences numériques françaises de 5 à 30 personnes. Le produit vise à centraliser progressivement le pilotage des missions clients afin de réduire la fragmentation et la dépendance à plusieurs solutions SaaS.
+Cockpit a vocation à devenir un espace de travail souverain pour les petites ESN et agences numériques françaises de 5 à 30 personnes. Le produit vise à centraliser progressivement le pilotage des missions clients afin de réduire la fragmentation et la dépendance à plusieurs solutions SaaS.
 
 La V1 reste volontairement limitée à un cockpit de suivi et de validation des livrables. L’équipe pilote les tâches et les livrables dans un Kanban interne. Le client accède à un portail authentifié présentant uniquement l’avancement utile, les échéances, les blocages et les livrables soumis. Il peut valider un livrable ou demander une révision avec un motif obligatoire.
 

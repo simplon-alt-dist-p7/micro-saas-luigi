@@ -28,7 +28,7 @@
   <text x="80" y="87" class="subtitle">Périmètre fonctionnel de la V1 · toutes les interactions sont soumises aux permissions</text>
 
   <rect x="300" y="120" width="1000" height="890" rx="12" class="system"/>
-  <text x="330" y="158" class="system-label">Système Micro SaaS Luigi</text>
+  <text x="330" y="158" class="system-label">Système Cockpit</text>
 
   <!-- Acteur Administrateur -->
   <circle cx="145" cy="240" r="23" class="actor-line"/>

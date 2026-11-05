@@ -1,4 +1,4 @@
-# Architecture — Cockpit de suivi de mission client
+# Architecture — Cockpit
 
 | Information | Valeur |
 | --- | --- |
